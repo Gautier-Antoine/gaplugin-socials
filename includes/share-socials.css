@@ -1,0 +1,196 @@
+
+@import url('https://lepointbleu.net/wp-includes/css/dashicons.min.css');
+@import url('https://use.fontawesome.com/releases/v5.2.0/css/all.css');
+
+.phone::before {
+	font-family: "dashicons";
+	content: "\f525";
+}
+.email::before {
+  font-family: "Font Awesome 5 Free";
+	content: "\f0e0";
+  font-family: "dashicons";
+	content: "\f465";
+}
+.map::before {
+  font-family: "dashicons";
+  content: "\f109";
+  font-family: "Font Awesome 5 Free";
+	content: "\f279";
+}
+.youtube::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f167";
+}
+.vimeo::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f27d";
+}
+.facebook::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f082";
+	font-family: "dashicons";
+	content: "\f304";
+}
+.instagram::before{
+  font-family: "Font Awesome 5 Brands";
+	content: "\f16d";
+}
+.snapchat::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f2ac";
+}
+.twitter::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f099";
+	font-family: "dashicons";
+	content: "\f301";
+}
+.whatsapp::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f232";
+}
+.telegram::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f3fe";
+}
+.viber::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f409";
+}
+.wechat::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f1d7";
+}
+.pinterest::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f0d2";
+}
+.linkedin::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f08c";
+}
+.github::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f09b";
+}
+.twitch::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f1e8";
+}
+.tumblr::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f173";
+}
+.flipboard::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f44d";
+}
+.discord::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f392";
+}
+.flickr::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f16e";
+}
+.deviantart::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f1bd";
+}
+.viadeo::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f2a9";
+}
+.skype::before {
+  font-family: "Font Awesome 5 Brands";
+	content: "\f17e";
+}
+
+.content-area ::before{
+	font-weight: 400;
+	vertical-align: middle
+}
+.content-area p::before{
+	margin-right: 10px;
+}
+
+/* SHARE */
+.share {
+	color:white !important;
+	background-color: rgb(66, 103, 178, 0.4);
+  box-shadow: 0px 0px 7px rgba(255,255,255,0.3);
+	padding: 5px;
+	/*! vertical-align: middle; */
+	border-radius: 5px;
+	font-size: 2em;
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+	margin-left: 10px;
+	/*float: right;*/
+  display: inline-block;
+  text-align: center;
+  margin-top: 55px;
+  text-align: center;
+  margin: 5px 0px;
+}
+.share ::before {
+    vertical-align: top;
+}
+.share-text {
+  font-size: 0.5em;
+}
+.share-text, .share {
+  font-size: 1em;
+}
+.share a, .share div{
+	color:white !important;
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  float:left;
+  margin: 0px 5px;
+}
+.share :hover::before{
+	color:#8ab0ff;
+	text-shadow: 2px 2px 4px rgba(36, 36, 36, 0.7);
+}
+
+
+
+/* FOLLOW */
+.follow {
+/*	color:white !important;
+	background-color: rgb(66, 103, 178, 0.4);
+  box-shadow: 0px 0px 7px rgba(255,255,255,0.3);
+	padding: 5px;
+	/*! vertical-align: middle; */
+	border-radius: 5px;
+	font-size: 1.5em;
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+	margin-left: 10px;
+	/*float: right;*/
+  display: inline-block;
+  text-align: center;
+  margin-top: 55px;
+  text-align: center;
+  margin: 5px 0px;
+  color:white;
+}
+.follow-text {
+  font-size: 0.5em;
+  float:left;
+}
+.follow-text, .follow {
+  font-size: 1em;
+}
+.follow ::before {
+    vertical-align: top;
+}
+.follow a{
+	color:white;
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  float:left;
+  margin: 0px 5px;
+}
+.follow :hover::before{
+	color:#8ab0ff;
+	text-shadow: 2px 2px 4px rgba(36, 36, 36, 0.7);
+}

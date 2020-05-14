@@ -1,0 +1,23 @@
+/*ADMIN*/
+tr::before{
+	/*! display: none; */
+	float: left;
+	vertical-align: baseline;
+	margin-top: 20px;
+	padding-right: 10px;
+	font-size: 2em;
+}
+tr {
+	float:left;
+	margin: 5px;
+	padding: 0px 15px;
+	border-radius: 10px;
+	background-color: rgba(0,0,0,0.1);
+}
+th {
+	width: 60px !important;;
+}
+
+tr:first-of-type {width:calc(100% - 60px);}
+/* tr {width: calc(50% - 50px);} */
+tr:first-of-type th {width:auto !important;}

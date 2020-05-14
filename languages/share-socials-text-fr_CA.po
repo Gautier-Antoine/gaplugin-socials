@@ -1,0 +1,85 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2020-05-14 17:59-0400\n"
+"PO-Revision-Date: 2020-05-14 17:59-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_CA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3.1\n"
+"X-Poedit-Basepath: ../../share-nav\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: agplugin-socials-plugin.php:37
+msgid "You are not currently logged in"
+msgstr "Vous n’êtes pas connecté actuellement"
+
+#: includes/AdminPage.php:92
+msgid "Parameters"
+msgstr "Paramètres"
+
+#: includes/AdminPage.php:139
+msgid "Welcome to AGPlugin Page"
+msgstr "Bienvenue sur AGPlugin Page"
+
+#: includes/AdminPage.php:141
+msgid "You'll find the different sections in the tabs"
+msgstr "Vous trouverez les différentes sections dans la tabulation"
+
+#: includes/AdminPage.php:148
+msgid "Navigation "
+msgstr "Navigation "
+
+#: includes/Follow.php:50 includes/Share.php:49
+msgid "Click to hide text before socials"
+msgstr "Cliquez pour cacher le texte avant les réseaux sociaux"
+
+#: includes/Follow.php:69
+msgid "Checkbox for showing text"
+msgstr "Case à cocher pour montrer le texte"
+
+#: includes/Follow.php:77
+msgid "Which social media do you want to show to your visitors"
+msgstr "Quels réseaux sociaux voulez-vous partager avec vos visiteurs"
+
+#: includes/Follow.php:78
+msgid "Put the link to your social media to activate"
+msgstr "Mettez le lien vers votre réseau social pour l'activer"
+
+#: includes/Follow.php:88
+#, php-format
+msgid "Put your %1$s URL"
+msgstr "Mettez votre %1$s URL"
+
+#: includes/Follow.php:98
+msgid "Follow us on"
+msgstr "Suivez-nous sur"
+
+#: includes/Follow.php:107
+msgid "Link to"
+msgstr "Lien vers"
+
+#: includes/Share.php:68
+msgid "Checkbox for hiding text"
+msgstr "Case à cocher pour cacher le texte"
+
+#: includes/Share.php:76
+msgid "Which social media do you want to share with your visitors"
+msgstr "Quels réseaux sociaux voulez-vous partager avec vos visiteurs"
+
+#: includes/Share.php:86
+#, php-format
+msgid "Checkbox for %1$s"
+msgstr "Case à cocher pour %1$s"
+
+#: includes/Share.php:96 includes/Share.php:112
+msgid "Share this on"
+msgstr "Partagez sur"
+
+#~ msgid "Share on"
+#~ msgstr "Partagez sur"
