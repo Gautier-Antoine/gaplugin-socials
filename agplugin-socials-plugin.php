@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Socials-AGPlugin
-Plugin URI: gautierantoine.com
+Plugin URI: https://github.com/Pepite61/agplugin-socials
 Description: Plugin for your socials media
 Version: 0.00.01
 
