@@ -1,5 +1,13 @@
 # agplugin-socials
-After installing the plugin. You'll have a new menu in your admin page "AGPlugin". 
+=== Socials - AGPlugin ===
+Author: Antoine GAUTIER
+Tags: socials, media, navigation
+Requires at least: 5.2
+License: GPLv3
+
+== Description ==
+
+After installing the plugin. You'll have a new menu in your admin page "AGPlugin".
 It will have 2 different parts "follow" (who link to your social page) and "share" (to share the page).
 
     follow: add the URL to your social media to activate it.
