@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Socials-AGPlugin
+Plugin Name: Socials-AG
 Plugin URI: https://github.com/Pepite61/agplugin-socials
 Description: Plugin for your socials media
 Version: 0.00.01
@@ -15,12 +15,12 @@ Domain Path: /languages
 License:     GPL v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
-Socials-AGPlugin is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+Socials-AG is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
 
-Socials-AGPlugin is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Socials-AG is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with Socials-AGPlugin.
+You should have received a copy of the GNU General Public License along with Socials-AG.
 If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
 */
 

@@ -1,5 +1,5 @@
 # agplugin-socials
-=== Socials - AGPlugin ===
+=== Socials - AG ===
 Author: Antoine GAUTIER
 Tags: socials, media, navigation
 Requires at least: 5.2
