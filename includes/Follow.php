@@ -102,6 +102,8 @@ class Follow extends AdminPage{
               $class = strtolower($social['name']);
               if ($class === 'email') {
                 $link = 'mailto:';
+              } elseif ($class === 'phone') {
+                $link = 'tel:';
               } else {
                 $link = '';
               }
