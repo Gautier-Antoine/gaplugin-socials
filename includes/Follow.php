@@ -1,5 +1,5 @@
 <?php
-namespace AGPlugin;
+namespace GAPlugin;
 /**
 * Class Follow
 * manage the social media in your Follow ShortcodeNav
@@ -21,7 +21,7 @@ class Follow extends AdminPage{
       /**
       * @var string name for the plugin folder
       */
-      FOLDER = 'agplugin-socials';
+      FOLDER = 'gaplugin-socials';
 
     public static function getfolder(){
       return plugin_dir_url( __DIR__ );
@@ -44,16 +44,16 @@ class Follow extends AdminPage{
       ['name' => 'YouTube'], ['name' => 'Vimeo']
     ];
     public static function removeExtraOptions() {
-      delete_option(static::PAGE . '-agp-showtext' );
+      delete_option(static::PAGE . '-gap-showtext' );
     }
     public static function getExtraSettings () {
       $text = __('Click to hide text before socials', static::LANGUAGE);
       register_setting(
         static::PAGE . static::EXTENSION,
-        static::PAGE . '-agp-showtext'
+        static::PAGE . '-gap-showtext'
       );
       add_settings_field(
-        static::PAGE . static::EXTENSION . '_agp_showtext',
+        static::PAGE . static::EXTENSION . '_gap_showtext',
         $text,
         [static::class, 'showText'],
         static::PAGE . static::EXTENSION,
@@ -64,10 +64,10 @@ class Follow extends AdminPage{
         ?>
           <input
             type="checkbox"
-            name="<?= static::PAGE . '-agp-showtext' ?>"
+            name="<?= static::PAGE . '-gap-showtext' ?>"
             class="checkbox show-text"
             title="<?php printf(__('Checkbox for showing text', static::LANGUAGE)) ?>"
-            <?php if (get_option(static::PAGE . '-agp-showtext')) {echo ' checked';} ?>
+            <?php if (get_option(static::PAGE . '-gap-showtext')) {echo ' checked';} ?>
           >
         <?php
     }
@@ -93,19 +93,24 @@ class Follow extends AdminPage{
     }
     public static function ShortcodeNav() {
         echo '<div class="' . static::PAGE . '">';
-          if (!get_option(static::PAGE . '-agp-showtext')){
+          if (!get_option(static::PAGE . '-gap-showtext')){
             echo '<div class="' . static::PAGE . '-text">';
               printf(__( 'Follow us on', static::LANGUAGE ));
             echo '</div>';
           }
           foreach (static::$list as $social) {
               $class = strtolower($social['name']);
+              if ($class === 'email') {
+                $link = 'mailto:';
+              } else {
+                $link = '';
+              }
               if (get_option(static::PAGE . '-' . $class)) {
                 echo '
                   <a
                     target="_blank"
                     title="' . __( 'Link to', static::LANGUAGE ) . ' ' . $social['name'] . '"
-                    href="' . esc_html(get_option(static::PAGE . '-' . $class)) . '"
+                    href="' . $link . esc_html(get_option(static::PAGE . '-' . $class)) . '"
                   >
                     <div class="' . $class . '"></div>
                   </a>

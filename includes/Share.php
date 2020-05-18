@@ -1,5 +1,5 @@
 <?php
-namespace AGPlugin;
+namespace GAPlugin;
 /**
 * Class Share
 * manage the social media where we can share the article in your Share ShortcodeNav
@@ -21,7 +21,7 @@ class Share extends AdminPage {
     /**
     * @var string name for the plugin folder
     */
-    FOLDER = 'agplugin-socials';
+    FOLDER = 'gaplugin-socials';
 
     public static function getfolder(){
       return plugin_dir_url( __DIR__ );
@@ -43,16 +43,16 @@ class Share extends AdminPage {
       // CSS ready: insta,Map, Youtube, Twitch, linkedin, vimeo, github, WeChat, Tumblr, Viber, Snapchat, flipboard
   ];
   public static function removeExtraOptions() {
-    delete_option(static::PAGE . '-agp-showtext' );
+    delete_option(static::PAGE . '-gap-showtext' );
   }
   public static function getExtraSettings () {
     $text = __('Click to hide text before socials', static::LANGUAGE);
     register_setting(
       static::PAGE . static::EXTENSION,
-      static::PAGE . '-agp-showtext'
+      static::PAGE . '-gap-showtext'
     );
     add_settings_field(
-      static::PAGE . static::EXTENSION . '_agp_showtext',
+      static::PAGE . static::EXTENSION . '_gap_showtext',
       $text,
       [static::class, 'showText'],
       static::PAGE . static::EXTENSION,
@@ -63,10 +63,10 @@ class Share extends AdminPage {
       ?>
         <input
           type="checkbox"
-          name="<?= static::PAGE . '-agp-showtext' ?>"
+          name="<?= static::PAGE . '-gap-showtext' ?>"
           class="checkbox show-text"
           title="<?php printf(__('Checkbox for hiding text', static::LANGUAGE)) ?>"
-          <?php if (get_option(static::PAGE . '-agp-showtext')) {echo ' checked';} ?>
+          <?php if (get_option(static::PAGE . '-gap-showtext')) {echo ' checked';} ?>
         >
       <?php
   }

@@ -1,5 +1,5 @@
 <?php
-namespace AGPlugin;
+namespace GAPlugin;
 /**
 * Class AdminPage
 * create a AdminPage
@@ -28,7 +28,7 @@ class AdminPage {
     /**
     * @var string name for the menu
     */
-    MENU = 'AGPlugin',
+    MENU = 'GAPlugin',
     /**
     * @var string name for the extension title
     */
@@ -36,7 +36,7 @@ class AdminPage {
     /**
     * @var string name for the admin page
     */
-    ADMINPAGE = 'ag-admin-page';
+    ADMINPAGE = 'ga-admin-page';
 
   public static function getfolder(){
     return plugin_dir_url( __DIR__ );
@@ -114,11 +114,11 @@ class AdminPage {
     public static function addMenu () {
       if ( empty ( $GLOBALS['admin_page_hooks'][static::ADMINPAGE] ) ){
           add_menu_page(
-              'AGautier Plugins',
+              'GAPlugins',
               static::MENU,
               'manage_options',
               static::ADMINPAGE,
-              [static::class,'AGPlugin_admin_page'],
+              [static::class,'GAPlugin_admin_page'],
               'dashicons-share',
               30
           );
@@ -132,11 +132,11 @@ class AdminPage {
         [static::class, 'render']
       );
     }
-    public static function AGPlugin_admin_page(){
+    public static function GAPlugin_admin_page(){
       ?>
       <div class="wrap">
         <h2><?=
-         __('Welcome to AGPlugin Page', static::LANGUAGE) . '<h2>
+         __('Welcome to GAPlugin Page', static::LANGUAGE) . '<h2>
            <p>' .
            __('You\'ll find the different sections in the tabs', static::LANGUAGE) . '</p><br />';
           ?>

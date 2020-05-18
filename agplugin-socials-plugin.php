@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: Socials-AG
-Plugin URI: https://github.com/Pepite61/agplugin-socials
+Plugin Name: Socials-GA
+Plugin URI: https://github.com/Pepite61/gaplugin-socials
 Description: Plugin for your socials media
 Version: 0.00.01
 
@@ -15,12 +15,12 @@ Domain Path: /languages
 License:     GPL v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
-Socials-AG is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+Socials-GA is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
 
-Socials-AG is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Socials-GA is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with Socials-AG.
+You should have received a copy of the GNU General Public License along with Socials-GA.
 If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
 */
 
@@ -41,19 +41,19 @@ If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
       return $result;
     }
   );
-  if (!class_exists('AGPlugin\AdminPage')){
+  if (!class_exists('GAPlugin\AdminPage')){
     require_once 'includes/AdminPage.php';
   }
   require_once 'includes/Follow.php';
   require_once 'includes/Share.php';
 
-  register_uninstall_hook( __FILE__, ['AGPlugin\Follow', 'removeOptions']);
-  register_uninstall_hook( __FILE__, ['AGPlugin\Share', 'removeOptions']);
+  register_uninstall_hook( __FILE__, ['GAPlugin\Follow', 'removeOptions']);
+  register_uninstall_hook( __FILE__, ['GAPlugin\Share', 'removeOptions']);
 
   add_action(
     'init',
     function () {
-      AGPlugin\Follow::register();
-      AGPlugin\Share::register();
+      GAPlugin\Follow::register();
+      GAPlugin\Share::register();
     }
   );
