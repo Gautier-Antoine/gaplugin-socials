@@ -1,14 +1,9 @@
 # gaplugin-socials
 === Socials - GA ===
 Author: Antoine GAUTIER
-<<<<<<< HEAD
 Author URI: gautierantoine.com
 Contributors: gautierantoine
 Tags: socials, media, navigation, facebook, twitter, instagram
-=======
-Contributors: antoinegautier
-Tags: socials, media, navigation
->>>>>>> 9d490e7f82f1eba03c5d55143f251aff890e6a3b
 Requires at least: 5.2
 Tested up to: 5.2
 Requires PHP: 7.2
@@ -32,17 +27,10 @@ You just have to use the shortcode in your theme to display them:
 
 Enjoy !
 
-<<<<<<< HEAD
 Take a look at my website [GautierAntoine.com](https://gautierantoine.com)
 
 == Installation ==
 1. Install the plugin.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. In the "GAPlugin" Menu in your admin panel, you can select your social medias.
-=======
-== Installation ==
-1. Install the plugin.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. In the AG Menu in your admin panel, you can select your social medias.
->>>>>>> 9d490e7f82f1eba03c5d55143f251aff890e6a3b
 4. Finally place the shortcodes [follow-nav] and/or [share-nav] in your templates.
