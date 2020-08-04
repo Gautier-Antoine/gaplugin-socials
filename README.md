@@ -5,7 +5,7 @@ Author URI: gautierantoine.com
 Contributors: gautierantoine
 Tags: socials, media, navigation, facebook, twitter, instagram
 Requires at least: 5.2
-Tested up to: 5.2
+Tested up to: 5.5
 Requires PHP: 7.2
 Stable tag: 0.00.01
 License: GPLv3
