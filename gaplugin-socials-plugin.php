@@ -3,9 +3,10 @@
 Plugin Name: Socials-GA
 Plugin URI: https://github.com/Pepite61/gaplugin-socials
 Description: Plugin for your socials media
-Version: 0.00.01
+Version: 0.00.02
 
 Requires at least: 5.2
+Tested up to: 5.6
 Requires PHP: 7.2
 
 Author: GAUTIER Antoine
@@ -49,6 +50,10 @@ If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
 
   register_uninstall_hook( __FILE__, ['GAPlugin\Follow', 'removeOptions']);
   register_uninstall_hook( __FILE__, ['GAPlugin\Share', 'removeOptions']);
+
+  // register_deactivation_hook( __FILE__, ['GAPlugin\Follow', 'removeOptions']);
+  // register_activation_hook( __FILE__, ['GAPlugin\Share', 'removeOptions']);
+
 
   add_action(
     'init',
