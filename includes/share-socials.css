@@ -2,107 +2,113 @@
 @import url('https://lepointbleu.net/wp-includes/css/dashicons.min.css');
 @import url('https://use.fontawesome.com/releases/v5.2.0/css/all.css');
 
-.phone::before {
+
+th::before {
+	vertical-align: middle;
+	margin-right:5px;
+	font-size: 2em;
+}
+.phone th::before, .phone::before {
 	font-family: "dashicons";
 	content: "\f525";
 }
-.email::before {
+.email th::before, .email::before {
   font-family: "Font Awesome 5 Free";
 	content: "\f0e0";
   font-family: "dashicons";
 	content: "\f465";
 }
-.map::before {
+.map th::before, .map::before {
   font-family: "dashicons";
   content: "\f109";
   font-family: "Font Awesome 5 Free";
 	content: "\f279";
 }
-.youtube::before {
+.youtube th::before, .youtube::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f167";
 }
-.vimeo::before {
+.vimeo th::before, .vimeo::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f27d";
 }
-.facebook::before {
+.facebook th::before, .facebook::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f082";
 	font-family: "dashicons";
 	content: "\f304";
 }
-.instagram::before{
+.instagram th::before, .instagram::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f16d";
 }
-.snapchat::before {
+.snapchat th::before, .snapchat::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f2ac";
 }
-.twitter::before {
+.twitter th::before, .twitter::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f099";
 	font-family: "dashicons";
 	content: "\f301";
 }
-.whatsapp::before {
+.whatsapp th::before, .whatsapp::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f232";
 }
-.telegram::before {
+.telegram th::before, .telegram::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f3fe";
 }
-.viber::before {
+.viber th::before, .viber::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f409";
 }
-.wechat::before {
+.wechat th::before, .wechat::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f1d7";
 }
-.pinterest::before {
+.pinterest th::before, .pinterest::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f0d2";
 }
-.linkedin::before {
+.linkedin th::before, .linkedin::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f08c";
 }
-.github::before {
+.github th::before, .github::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f09b";
 }
-.twitch::before {
+.twitch th::before, .twitch::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f1e8";
 }
-.tumblr::before {
+.tumblr th::before, .tumblr::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f173";
 }
-.flipboard::before {
+.flipboard th::before, .flipboard::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f44d";
 }
-.discord::before {
+.discord th::before, .discord::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f392";
 }
-.flickr::before {
+.flickr th::before, .flickr::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f16e";
 }
-.deviantart::before {
+.deviantart th::before, .deviantart::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f1bd";
 }
-.viadeo::before {
+.viadeo th::before, .viadeo::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f2a9";
 }
-.skype::before {
+.skype th::before, .skype::before {
   font-family: "Font Awesome 5 Brands";
 	content: "\f17e";
 }

@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Socials-GA
+ */
 namespace GAPlugin;
 /**
 * Class Follow

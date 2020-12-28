@@ -42,7 +42,7 @@ tr:nth-child(1) th {
 tr:nth-child(1) {
 	width: 95%;
 }
-th::before {
+tr::before {
 	content: "=";
 	vertical-align: middle;
 	font-size: 2em;
@@ -52,4 +52,36 @@ th::before {
 	padding: 6px 10px 10px 10px;
 	background-color: #777;
 	border-radius: 3px;
+}
+
+
+
+
+
+.phone::before,
+.email::before,
+.map::before,
+.youtube::before,
+.vimeo::before,
+.facebook::before,
+.instagram::before,
+.snapchat::before,
+.twitter::before,
+.whatsapp::before,
+.telegram::before,
+.viber::before,
+.wechat::before,
+.pinterest::before,
+.linkedin::before,
+.github::before,
+.twitch::before,
+.tumblr::before,
+.flipboard::before,
+.discord::before,
+.flickr::before,
+.deviantart::before,
+.viadeo::before,
+.skype::before {
+
+	content: "=";
 }

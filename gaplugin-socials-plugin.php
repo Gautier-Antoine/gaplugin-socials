@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Socials-GA
+ */
 /*
 Plugin Name: Socials-GA
 Plugin URI: https://github.com/Pepite61/gaplugin-socials
