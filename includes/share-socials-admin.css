@@ -15,9 +15,41 @@ tr {
 	background-color: rgba(0,0,0,0.1);
 }
 th {
-	width: 60px !important;;
+	width: 60px !important;
+}
+/* tr:first-of-type {width:calc(100% - 60px);} */
+/* tr {width: calc(50% - 50px);} */
+/* tr:first-of-type th {width:auto !important;} */
+
+table th {
+	vertical-align: middle !important;
+	padding-left: 15px !important;
+}
+tr:nth-child(1) ::before{
+	display: none;
+}
+tr:nth-child(1) th {
+	width: 80px !important;
 }
 
-tr:first-of-type {width:calc(100% - 60px);}
-/* tr {width: calc(50% - 50px);} */
-tr:first-of-type th {width:auto !important;}
+.follow-admin tr {
+	width:calc(95% / 2 - 20px);
+}
+.share-admin tr {
+	width:calc(95% / 3 - 26px);
+}
+
+tr:nth-child(1) {
+	width: 95%;
+}
+th::before {
+	content: "=";
+	vertical-align: middle;
+	font-size: 2em;
+	font-weight: bolder;
+	color: white;
+	margin-right: 8px;
+	padding: 6px 10px 10px 10px;
+	background-color: #777;
+	border-radius: 3px;
+}

@@ -40,7 +40,8 @@ class Share extends AdminSocials {
      */
     public static function registerSettingsText () {
       printf(
-        __( 'Which social media do you want to share with your visitors', static::LANGUAGE ) .
+        __( 'Which social media do you want to share with your visitors', static::LANGUAGE ) . '<br>' .
+        __( 'You can reorder them too', static::LANGUAGE ) .
         '<br>Shortcode = [GAP-' . static::PAGE . ']'
       );
     }

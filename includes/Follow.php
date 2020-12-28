@@ -54,7 +54,8 @@ class Follow extends AdminSocials {
     public static function registerSettingsText () {
       printf(
         __( 'Which social media do you want to show to your visitors', static::LANGUAGE) . '<br>' .
-        __('Put the link to your social media to activate', static::LANGUAGE) .
+        __('Put the link to your social media to activate', static::LANGUAGE) . '<br>' .
+        __('You can reorder them too', static::LANGUAGE) .
         '<br>Shortcode = [GAP-' . static::PAGE . ']'
       );
     }

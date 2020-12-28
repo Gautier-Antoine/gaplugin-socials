@@ -14,7 +14,7 @@ class AdminSocials {
     /**
     * @var string name for the option
     */
-    OPTION = '';
+    OPTION = '',
 
     /**
     * @var string name of the language file
@@ -89,8 +89,6 @@ class AdminSocials {
       wp_register_style(static::FILE . '-admin', static::getFolder() . 'includes/' . static::FILE . '-admin.css', [static::FILE]);
       wp_enqueue_style(static::FILE . '-admin');
 
-      wp_register_style('admin_form_ylc', plugin_dir_url( __FILE__ ) . 'admin_form_ylc.css' );
-      wp_enqueue_style('admin_form_ylc');
       wp_enqueue_script( 'jquery-ui-sortable' );
       wp_register_script('admin_form_ylc_js', plugin_dir_url( __FILE__ ) . 'admin_form_ylc_js.js' );
       wp_enqueue_script('admin_form_ylc_js');
@@ -139,7 +137,7 @@ class AdminSocials {
   public static function render () {
       ?>
       <h1><?= _e('Navigation ', static::LANGUAGE) . ucfirst(static::PAGE) ?></h1>
-      <form action="options.php" method="post">
+      <form class="<?= static::PAGE . '-admin' ?>" action="options.php" method="post">
           <?php settings_fields(static::PAGE . static::EXTENSION);
           do_settings_sections(static::PAGE . static::EXTENSION);
           submit_button();
