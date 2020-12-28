@@ -4,32 +4,19 @@ namespace GAPlugin;
 * Class Follow
 * manage the social media in your Follow ShortcodeNav
 */
-class Follow extends AdminPage{
+class Follow extends AdminSocials {
+
     const
       /**
       * @var string name of the page
       */
       PAGE = 'follow',
-      /**
-      * @var string name of the language file
-      */
-      LANGUAGE = 'share-socials-text',
-      /**
-      * @var string name for the files
-      */
-      FILE = 'share-socials',
-      /**
-      * @var string name for the plugin folder
-      */
-      FOLDER = 'gaplugin-socials',
+
       /**
       * @var string name for the option
       */
       OPTION = 'gap_follow';
 
-    public static function getfolder(){
-      return plugin_dir_url( __DIR__ );
-    }
     /**
     * @var array list of social medias
     */
@@ -61,14 +48,21 @@ class Follow extends AdminPage{
       23 => ['label_for' => 'Vimeo', 'url' => false ]
     ];
 
+    /**
+     * Text to display with the settings section
+     */
     public static function registerSettingsText () {
       printf(
         __( 'Which social media do you want to show to your visitors', static::LANGUAGE) . '<br>' .
         __('Put the link to your social media to activate', static::LANGUAGE) .
-        '<br>Shortcode = [' . static::PAGE . '-nav]'
+        '<br>Shortcode = [GAP-' . static::PAGE . ']'
       );
     }
 
+    /**
+    * Create Admin Page Functions for each field
+    * @param array $args list from registerSettings()
+    */
     public static function addPageFunction( $args ) {
         $option_name = static::getOptionName();
         // cols="30"
@@ -84,20 +78,9 @@ class Follow extends AdminPage{
         <?php
     }
 
-    public static function showText( $args ) {
-        $option_name = static::getOptionName();
-        ?>
-          <input
-            type="textarea"
-            name="<?= $option_name . '[' . $args['id'] . '][text]' ?>"
-            class="textarea show-text"
-            title="<?php printf(__('Checkbox for showing text', static::LANGUAGE)) ?>"
-            value="<?= $args['text'] ?>"
-          ></input>
-          <input type="hidden" name="<?= $option_name . '[' . $args['id'] . '][label_for]' ?>" value="<?= $args['label_for'] ?>"></input>
-        <?php
-    }
-
+    /**
+     * Create ShortCode
+     */
     public static function ShortcodeNav() {
         $option_name = static::getOptionName();
         echo '<div class="' . static::PAGE . '">';
@@ -132,67 +115,45 @@ class Follow extends AdminPage{
         echo '</div>';
     }
 
-    public static function registerAdminScripts() {
-        wp_register_style(static::FILE, static::getFolder() . 'includes/' . static::FILE . '.css');
-        wp_register_style(static::FILE . '-admin', static::getFolder() . 'includes/' . static::FILE . '-admin.css', [static::FILE]);
-        wp_enqueue_style(static::FILE . '-admin');
-
-        wp_register_style('admin_form_ylc', plugin_dir_url( __FILE__ ) . 'admin_form_ylc.css' );
-        wp_enqueue_style('admin_form_ylc');
-        wp_enqueue_script( 'jquery-ui-sortable' );
-        wp_register_script('admin_form_ylc_js', plugin_dir_url( __FILE__ ) . 'admin_form_ylc_js.js' );
-        wp_enqueue_script('admin_form_ylc_js');
-    }
-
-    public static function registerSettings () {
-        static::checkOptionsCreated();
-        static::getExtraSettings();
-        // Instead of click to hide text, type text see setting array
-        $option_name = static::getOptionName();
-        register_setting(
-            static::PAGE . static::EXTENSION, // Option group
-            $option_name, // Option name
-            array( static::class, 'sanitize_list' ) // Sanitize
-        );
-        add_settings_section(
-          static::PAGE . static::EXTENSION . '_section', // ID
-          __( 'Parameters', static::LANGUAGE ), // Title
-          [static::class, 'registerSettingsText'], // Callback
-          static::PAGE . static::EXTENSION // Page
-        );
-        $options = (get_option( $option_name )) ?: static::$list;
-        foreach ( $options as $id => $option ) {
-          if ($id !== 'settings') {
+    /**
+     * Create Fields for the admin page
+     *
+     * @param string $option_name
+     */
+    public static function getFields( $option_name ) {
+      $options = (get_option( $option_name )) ?: static::$list;
+      foreach ( $options as $id => $option ) {
+        if ($id !== 'settings') {
+          $title = static::PAGE . static::EXTENSION . '_' . strtolower($option['label_for']);
+          add_settings_field(
+            $title,
+            $option['label_for'],
+            [static::class, 'addPageFunction'],
+            static::PAGE . static::EXTENSION, // Page
+            static::PAGE . static::EXTENSION . '_section',
+            [
+              'label_for' => $option['label_for'],
+              'url' => ($option['url']) ?: null,
+              'id' => $id,
+              'class' => strtolower($option['label_for'])
+            ]
+          );
+        } else {
             $title = static::PAGE . static::EXTENSION . '_' . strtolower($option['label_for']);
             add_settings_field(
               $title,
               $option['label_for'],
-              [static::class, 'addPageFunction'],
+              [static::class, 'showText'],
               static::PAGE . static::EXTENSION, // Page
               static::PAGE . static::EXTENSION . '_section',
               [
                 'label_for' => $option['label_for'],
-                'url' => ($option['url']) ?: null,
-                'id' => $id,
-                'class' => strtolower($option['label_for'])
+                'text' => ($option['text']) ?: null,
+                'id' => $id
               ]
             );
-          } else {
-              $title = static::PAGE . static::EXTENSION . '_' . strtolower($option['label_for']);
-              add_settings_field(
-                $title,
-                $option['label_for'],
-                [static::class, 'showText'],
-                static::PAGE . static::EXTENSION, // Page
-                static::PAGE . static::EXTENSION . '_section',
-                [
-                  'label_for' => $option['label_for'],
-                  'text' => ($option['text']) ?: null,
-                  'id' => $id
-                ]
-              );
-          }
         }
+      }
     }
 
     /**
@@ -214,56 +175,6 @@ class Follow extends AdminPage{
         }
       }
       return $valid_input;
-    }
-
-    /**
-     * Delete option in db
-     */
-    public static function removeOptions(){
-      $option_name = static::getOptionName();
-      delete_option( $option_name );
-    }
-
-    /**
-     * Return the Name of the option
-     */
-    protected static function getOptionName() {
-      if (!is_multisite()){
-        $option_name = static::OPTION;
-      } else {
-        $option_name = static::OPTION . '_' . get_current_blog_id();
-      }
-      return $option_name;
-    }
-
-    /**
-     * Checking if multisite and creating option
-     */
-    protected static function checkOptionsCreated() {
-      if (!is_multisite()){
-        if (empty(get_option( static::OPTION ))) {
-          add_option( static::OPTION, static::$list);
-        }
-      } else {
-        global $wpdb;
-        $blogs = $wpdb->get_results("
-          SELECT blog_id
-          FROM {$wpdb->blogs}
-          WHERE site_id = '{$wpdb->siteid}'
-          AND spam = '0'
-          AND deleted = '0'
-          AND archived = '0'
-        ");
-        $original_blog_id = get_current_blog_id();
-        foreach ( $blogs as $blog_id ) {
-          $id = $blog_id->blog_id;
-          switch_to_blog( $id );
-          if (empty(get_option( static::OPTION . '_' . $id ))) {
-            add_option( static::OPTION . '_' . $id, static::$list);
-          }
-        }
-        switch_to_blog( $original_blog_id );
-      }
     }
 
 }

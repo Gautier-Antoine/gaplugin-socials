@@ -42,18 +42,24 @@ If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
       return $result;
     }
   );
-  if (!class_exists('GAPlugin\AdminPage')){
-    require_once 'includes/AdminPage.php';
+  if (!class_exists('GAPlugin\AdminSocials')){
+    require_once 'includes/AdminSocials.php';
   }
-  require_once 'includes/Follow.php';
-  require_once 'includes/Share.php';
+  if (!class_exists('GAPlugin\Share')){
+    require_once 'includes/Share.php';
+  }
+  if (!class_exists('GAPlugin\Follow')){
+    require_once 'includes/Follow.php';
+  }
 
   register_uninstall_hook( __FILE__, ['GAPlugin\Follow', 'removeOptions']);
   register_uninstall_hook( __FILE__, ['GAPlugin\Share', 'removeOptions']);
 
-  // register_deactivation_hook( __FILE__, ['GAPlugin\Follow', 'removeOptions']);
-  // register_activation_hook( __FILE__, ['GAPlugin\Share', 'removeOptions']);
+  register_deactivation_hook( __FILE__, ['GAPlugin\Share', 'Deactivate']);
+  register_deactivation_hook( __FILE__, ['GAPlugin\Follow', 'Deactivate']);
 
+  register_activation_hook( __FILE__, ['GAPlugin\Share', 'Activate']);
+  register_activation_hook( __FILE__, ['GAPlugin\Follow', 'Activate']);
 
   add_action(
     'init',
