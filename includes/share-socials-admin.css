@@ -25,7 +25,7 @@ table th {
 	vertical-align: middle !important;
 	padding-left: 15px !important;
 }
-tr:nth-child(1) ::before{
+tr:nth-child(1)::before{
 	display: none;
 }
 tr:nth-child(1) th {

@@ -59,12 +59,16 @@ class Share extends AdminSocials {
           <input
             type="checkbox"
             class="checkbox"
+            id="<?= $args['label_for'] ?>"
             name="<?= $option_name . '[' . $args['id'] . '][active]' ?>"
             title="<?php printf(__('Checkbox for %1$s', static::LANGUAGE), $args['label_for']) ?>"
             <?php if ($args['active']) {echo ' checked';} ?>
           >
+        </td><td>
           <input type="hidden" name="<?= $option_name . '[' . $args['id'] . '][label_for]' ?>" value="<?= $args['label_for'] ?>"></input>
+        </td><td>
           <input type="hidden" name="<?= $option_name . '[' . $args['id'] . '][url]' ?>" value="<?= $args['url'] ?>"></input>
+
         <?php
     }
 

@@ -205,6 +205,7 @@ class AdminSocials {
         ?>
           <input
             type="textarea"
+            id="<?= $args['label_for'] ?>"
             name="<?= $option_name . '[' . $args['id'] . '][text]' ?>"
             class="textarea show-text"
             title="<?php printf(__('Add some text before the links', static::LANGUAGE)) ?>"

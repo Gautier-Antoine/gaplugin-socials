@@ -73,6 +73,7 @@ class Follow extends AdminSocials {
         ?>
           <textarea
             name="<?= $option_name . '[' . $args['id'] . '][url]' ?>"
+            id="<?= $args['label_for'] ?>"
             rows= "1"
             title="<?php printf(__('Put your %1$s URL', static::LANGUAGE), $args['label_for']) ?>"
           ><?=
