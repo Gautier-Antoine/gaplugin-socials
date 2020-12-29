@@ -3,11 +3,11 @@
 Author: Antoine GAUTIER
 Author URI: gautierantoine.com
 Contributors: gautierantoine
-Tags: socials, media, navigation, facebook, twitter, instagram
+Tags: socials, media, navigation, facebook, twitter, instagram, shortcode, multisite
 Requires at least: 5.2
 Tested up to: 5.5
 Requires PHP: 7.2
-Stable tag: 0.00.01
+Stable tag: 0.00.02
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -16,16 +16,17 @@ Your social medias in a shortcode.
 == Description ==
 
 After installing the plugin. You'll have a new menu in your admin page "GAPlugin".
-It will have 2 different parts "follow" (who link to your social page) and "share" (to share the page).
+It will have 2 different parts "follow" (who link to your social medias) and "share" (to share on social media that page).
 
-- share: select the social media where your visitors can share the page.
+- share: select the social media where your visitors can share the page, post, etc.
 - follow: add the URL to your social media to activate them.
 
-You can deactivate the text before the socials icons.
+You can add some text before the socials icons.
+You can order them as you wish.
 
 Then you just have to use the shortcode in your theme to display them:
-- share shortcode is: [share-nav]
-- follow shortcode is: [follow-nav]
+- share shortcode is: [GAP-share]
+- follow shortcode is: [GAP-follow]
 
 
 

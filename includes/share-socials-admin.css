@@ -32,23 +32,61 @@ tr:nth-child(1) th {
 	width: 80px !important;
 }
 
-.follow-admin tr {
-	width:calc(95% / 2 - 20px);
-}
-.share-admin tr {
-	width:calc(95% / 3 - 26px);
+.follow-admin tr, .share-admin tr {
+	width: calc(90% / 2 - 20px);
 }
 
 tr:nth-child(1) {
-	width: 95%;
+	width: 90%;
 }
+tr td {
+	float: inline-end;
+	margin: 8px 0px;
+}
+tr th{
+	float: inline-start;
+}
+@media screen and (max-width: 782px) {
+
+	.follow-admin tr, .share-admin tr {
+	width:calc(90% / 2 - 15px);
+	}
+	tr:nth-child(1) {
+		width: calc(90% + 10px);
+	}
+	tr::before {
+		margin: 10px 0px;
+	}
+}
+
+@media screen and (max-width: 582px) {
+	.follow-admin tr, .share-admin tr {
+	width: 90%;
+	}
+	tr:nth-child(1) {
+		width: 90%;
+	}
+	tr::before {
+		margin: 10px 0px;
+	}
+}
+@media screen and (min-width: 582px) {
+ tr:nth-child(1) td, tr:nth-child(1) th {
+	 float:  inline-start;
+	}
+}
+/* @media screen and (min-width: 782px) {
+ tr:nth-child(1) td, tr:nth-child(1) th {
+		margin: 10px;
+	}
+} */
 tr::before {
 	content: "=";
 	vertical-align: middle;
 	font-size: 2em;
 	font-weight: bolder;
 	color: white;
-	margin-right: 8px;
+	/* margin: 5px 0px; */
 	padding: 6px 10px 10px 10px;
 	background-color: #777;
 	border-radius: 3px;
