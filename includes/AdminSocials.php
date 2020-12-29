@@ -93,8 +93,8 @@ class AdminSocials {
       wp_enqueue_style(static::FILE . '-admin');
 
       wp_enqueue_script( 'jquery-ui-sortable' );
-      wp_register_script('admin_form_ylc_js', plugin_dir_url( __FILE__ ) . 'admin_form_ylc_js.js' );
-      wp_enqueue_script('admin_form_ylc_js');
+      wp_register_script('admin-sort', plugin_dir_url( __FILE__ ) . 'admin-sort.js' );
+      wp_enqueue_script('admin-sort');
   }
 
   /**
