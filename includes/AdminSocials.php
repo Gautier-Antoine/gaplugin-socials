@@ -105,7 +105,9 @@ class AdminSocials {
       add_action('admin_enqueue_scripts', [static::class, 'AdminScripts']);
       add_action('admin_init', [static::class, 'registerSettings']);
       add_action('admin_menu', [static::class, 'addMenu']);
-      add_shortcode('GAP-' . static::PAGE, [static::class, 'ShortcodeNav']);
+      if ( ! is_admin() ) {
+        add_shortcode('GAP-' . static::PAGE, [static::class, 'ShortcodeNav']);
+      }
       load_plugin_textdomain(static::LANGUAGE, false, static::FOLDER . '/languages/' );
   }
 

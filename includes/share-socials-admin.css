@@ -120,3 +120,25 @@ tr::before {
 
 	content: "=";
 }
+
+
+/* TEST HOVER DISAPPEAR */
+
+.ui-sortable-handle td textarea:empty {
+	width: 0;
+	opacity: 0;
+}
+.ui-sortable-handle td {
+	width: auto !important;
+}
+.ui-sortable-handle th {
+	width: 100px !important;
+}
+.ui-sortable-handle td textarea:focus{
+	width: calc(100%);
+	opacity: 1;
+}
+.ui-sortable-handle {
+	width: auto !important;
+	/*! height: -moz-fit-content; */
+}

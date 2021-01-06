@@ -168,18 +168,25 @@ class Follow extends AdminSocials {
      */
     public function sanitize_list( $input ) {
       foreach ( $input as $id => $option ) {
-        $valid_input[$id]['label_for'] = sanitize_text_field( $option['label_for'] );
-        if ($option['label_for'] === 'Email') {
-          $valid_input[$id]['url'] = ( !empty($option['url']) ) ? sanitize_email( $option['url'] ) : false;
-        } elseif ($option['label_for'] === 'Phone') {
-          $valid_input[$id]['url'] = ( !empty($option['url']) ) ? sanitize_text_field( $option['url'] ) : false;
-        } elseif ($option['label_for'] === 'Text before') {
-          $valid_input[$id]['text'] = ( !empty($option['text']) ) ? sanitize_text_field( $option['text'] ) : false;
+
+        if ( empty( $option['url'] ) &&  ( $option['label_for'] !== 'Text before' ) ) {
+          $empty_input[$id]['label_for'] = sanitize_text_field( $option['label_for'] );
+          $empty_input[$id]['url'] = false;
         } else {
-          $valid_input[$id]['url'] = ( !empty($option['url']) ) ? sanitize_url( $option['url'] ) : false;
+          $valid_input[$id]['label_for'] = sanitize_text_field( $option['label_for'] );
+          if ($option['label_for'] === 'Email') {
+            $valid_input[$id]['url'] = ( !empty($option['url']) ) ? sanitize_email( $option['url'] ) : false;
+          } elseif ($option['label_for'] === 'Phone') {
+            $valid_input[$id]['url'] = ( !empty($option['url']) ) ? sanitize_text_field( $option['url'] ) : false;
+          } elseif ($option['label_for'] === 'Text before') {
+            $valid_input[$id]['text'] = ( !empty($option['text']) ) ? sanitize_text_field( $option['text'] ) : false;
+          } else {
+            $valid_input[$id]['url'] = ( !empty($option['url']) ) ? sanitize_url( $option['url'] ) : false;
+          }
         }
       }
-      return $valid_input;
+      $return_input = array_merge($valid_input, $empty_input);
+      return $return_input;
     }
 
 }
