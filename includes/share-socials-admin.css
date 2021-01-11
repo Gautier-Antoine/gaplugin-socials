@@ -122,8 +122,6 @@ tr::before {
 }
 
 
-/* TEST HOVER DISAPPEAR */
-
 .ui-sortable-handle td textarea:empty {
 	width: 0;
 	opacity: 0;
@@ -140,5 +138,17 @@ tr::before {
 }
 .ui-sortable-handle {
 	width: auto !important;
-	/*! height: -moz-fit-content; */
+}
+
+
+@media screen and (max-width:420px) {
+	tr {
+		width:80% !important;
+	}
+	.ui-sortable-handle td{
+		float: inline-start;
+	}
+	.ui-sortable-handle {
+		width: 80% !important;
+	}
 }
