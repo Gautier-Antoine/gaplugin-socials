@@ -6,7 +6,7 @@
 Plugin Name: Socials-GA
 Plugin URI: https://github.com/Pepite61/gaplugin-socials
 Description: Plugin for your socials media
-Version: 0.00.02
+Version: 0.00.02.03
 
 Requires at least: 5.2
 Tested up to: 5.6

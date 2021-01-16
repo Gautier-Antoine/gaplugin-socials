@@ -59,15 +59,15 @@ class Share extends AdminSocials {
           <input
             type="checkbox"
             class="checkbox"
-            id="<?= $args['label_for'] ?>"
-            name="<?= $option_name . '[' . $args['id'] . '][active]' ?>"
-            title="<?php printf(__('Checkbox for %1$s', static::LANGUAGE), $args['label_for']) ?>"
-            <?php if ($args['active']) {echo ' checked';} ?>
+            id="<?= esc_attr( $args['label_for'] ) ?>"
+            name="<?= esc_attr( $option_name ) . '[' . esc_attr( $args['id'] ) . '][active]' ?>"
+            title="<?php printf( __('Checkbox for %1$s', static::LANGUAGE), esc_attr( $args['label_for'] ) ) ?>"
+            <?php ( isset( $args['active'] ) ) ? ' checked' : ''; ?>
           >
         </td><td>
-          <input type="hidden" name="<?= $option_name . '[' . $args['id'] . '][label_for]' ?>" value="<?= $args['label_for'] ?>"></input>
+          <input type="hidden" name="<?= esc_attr( $option_name ) . '[' . esc_attr( $args['id'] ) . '][label_for]' ?>" value="<?= esc_attr( $args['label_for'] ) ?>"></input>
         </td><td>
-          <input type="hidden" name="<?= $option_name . '[' . $args['id'] . '][url]' ?>" value="<?= $args['url'] ?>"></input>
+          <input type="hidden" name="<?= esc_attr( $option_name ) . '[' . esc_attr( $args['id'] ) . '][url]' ?>" value="<?= esc_url( $args['url'] ) ?>"></input>
 
         <?php
     }
@@ -82,26 +82,26 @@ class Share extends AdminSocials {
         if ( $id === 'settings' ) {
           if (!empty( $option['text'] ) ) {
             echo '<div class="' . static::PAGE . '-text">';
-              printf( $option['text'] );
+              printf( esc_attr( $option['text'] ) );
             echo '</div>';
           }
         } else {
-          if ($option['active'] === true) {
+          if ( $option['active'] === true ) {
             $img = null;
-            if ( isset($option['imgurl']) ) {
-              $img = $option['imgurl'] . get_the_post_thumbnail_url(get_the_ID(),'full');
+            if ( isset( $option['imgurl'] ) ) {
+              $img = esc_url( $option['imgurl'] ) . get_the_post_thumbnail_url( get_the_ID(),'full' );
             }
             $title = null;
-            if ( isset($option['titleurl']) ) {
-              $title = $option['titleurl'] . get_the_title();
+            if ( isset( $option['titleurl'] ) ) {
+              $title = esc_url( $option['titleurl'] ) . get_the_title();
             }
             echo '
               <a
                 target="_blank"
-                title="' . __( 'Share this on', static::LANGUAGE ) . ' ' . $option['label_for'] . '"
-                href="' . $option['url'] . get_permalink() . $img . $title . '"
+                title="' . __( 'Share this on', static::LANGUAGE ) . ' ' . esc_attr( $option['label_for'] ) . '"
+                href="' . esc_url( $option['url'] ) . get_permalink() . esc_url( $img ) . esc_url( $title ) . '"
               >
-                <div class="' . strtolower($option['label_for']) . '"></div>
+                <div class="' . strtolower( esc_attr( $option['label_for'] ) ) . '"></div>
               </a>';
           }
         }
@@ -118,33 +118,33 @@ class Share extends AdminSocials {
       $options = (get_option( $option_name )) ?: static::$list;
       foreach ( $options as $id => $option ) {
         if ($id !== 'settings') {
-          $title = static::PAGE . static::EXTENSION . '_' . strtolower($option['label_for']);
+          $title = static::PAGE . static::EXTENSION . '_' . strtolower( esc_attr( $option['label_for'] ) );
           add_settings_field(
             $title,
-            $option['label_for'],
+            esc_attr( $option['label_for'] ),
             [static::class, 'addPageFunction'],
             static::PAGE . static::EXTENSION, // Page
             static::PAGE . static::EXTENSION . '_section',
             [
-              'label_for' => $option['label_for'],
-              'url' => ($option['url']) ?: null,
-              'active' => ($option['active']) ?: 0,
-              'id' => $id,
-              'class' => strtolower($option['label_for'])
+              'label_for' => esc_attr( $option['label_for'] ),
+              'url' => ($option['url']) ? esc_attr( $option['url'] ) : null,
+              'active' => ($option['active']) ? esc_attr( $option['active'] ) : 0,
+              'id' => esc_attr( $id ),
+              'class' => strtolower( esc_attr( $option['label_for'] ) )
             ]
           );
         } else {
-          $title = static::PAGE . static::EXTENSION . '_' . strtolower($option['label_for']);
+          $title = static::PAGE . static::EXTENSION . '_' . strtolower( esc_attr( $option['label_for'] ) );
           add_settings_field(
             $title,
-            $option['label_for'],
+            esc_attr( $option['label_for'] ),
             [static::class, 'showText'],
             static::PAGE . static::EXTENSION, // Page
             static::PAGE . static::EXTENSION . '_section',
             [
-              'label_for' => $option['label_for'],
-              'text' => ($option['text']) ?: null,
-              'id' => $id
+              'label_for' => esc_attr( $option['label_for'] ),
+              'text' => ( $option['text'] ) ? esc_attr( $option['text'] ) : null,
+              'id' => esc_attr( $id )
             ]
           );
         }

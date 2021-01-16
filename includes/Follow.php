@@ -72,14 +72,14 @@ class Follow extends AdminSocials {
         // cols="30"
         ?>
           <textarea
-            name="<?= $option_name . '[' . $args['id'] . '][url]' ?>"
-            id="<?= $args['label_for'] ?>"
+            name="<?= esc_attr( $option_name ) . '[' . esc_attr( $args['id'] ) . '][url]' ?>"
+            id="<?= esc_attr( $args['label_for'] ) ?>"
             rows= "1"
-            title="<?php printf(__('Put your %1$s URL', static::LANGUAGE), $args['label_for']) ?>"
+            title="<?php printf( __('Put your %1$s URL', static::LANGUAGE), esc_attr( $args['label_for'] ) ) ?>"
           ><?=
-            esc_html( $args['url'] );
+            esc_url( $args['url'] );
           ?></textarea>
-          <input type="hidden" name="<?= $option_name . '[' . $args['id'] . '][label_for]' ?>" value="<?= $args['label_for'] ?>"></input>
+          <input type="hidden" name="<?= esc_attr( $option_name ) . '[' . esc_attr( $args['id'] ) . '][label_for]' ?>" value="<?= esc_attr( $args['label_for'] ) ?>"></input>
         <?php
     }
 
@@ -93,7 +93,7 @@ class Follow extends AdminSocials {
             if ( $id === 'settings' ) {
               if (!empty( $option['text'] ) ) {
                 echo '<div class="' . static::PAGE . '-text">';
-                  printf( $option['text'] );
+                  printf( esc_attr( $option['text'] ) );
                 echo '</div>';
               }
             } else {
@@ -108,10 +108,10 @@ class Follow extends AdminSocials {
                 echo '
                   <a
                     target="_blank"
-                    title="' . __( 'Link to', static::LANGUAGE ) . ' ' . $option['label_for'] . '"
-                    href="' . $link . esc_html( $option['url'] ) . '"
+                    title="' . __( 'Link to', static::LANGUAGE ) . ' ' . esc_attr( $option['label_for'] ) . '"
+                    href="' . $link . esc_url( $option['url'] ) . '"
                   >
-                    <div class="' . strtolower($option['label_for']) . '"></div>
+                    <div class="' . strtolower( esc_attr( $option['label_for'] ) ) . '"></div>
                   </a>
                 ';
               }
@@ -128,33 +128,33 @@ class Follow extends AdminSocials {
     public static function getFields( $option_name ) {
       $options = (get_option( $option_name )) ?: static::$list;
       foreach ( $options as $id => $option ) {
-        if ($id !== 'settings') {
-          $title = static::PAGE . static::EXTENSION . '_' . strtolower($option['label_for']);
+        if ( $id !== 'settings' ) {
+          $title = static::PAGE . static::EXTENSION . '_' . strtolower( esc_attr( $option['label_for'] ) );
           add_settings_field(
             $title,
-            $option['label_for'],
+            esc_attr( $option['label_for'] ),
             [static::class, 'addPageFunction'],
             static::PAGE . static::EXTENSION, // Page
             static::PAGE . static::EXTENSION . '_section',
             [
-              'label_for' => $option['label_for'],
-              'url' => ($option['url']) ?: null,
-              'id' => $id,
-              'class' => strtolower($option['label_for'])
+              'label_for' => esc_attr( $option['label_for'] ),
+              'url' => ( esc_url( $option['url'] ) ) ?: null,
+              'id' => esc_attr( $id ),
+              'class' => strtolower( esc_attr( $option['label_for'] ) )
             ]
           );
         } else {
-            $title = static::PAGE . static::EXTENSION . '_' . strtolower($option['label_for']);
+            $title = static::PAGE . static::EXTENSION . '_' . strtolower( esc_attr( $option['label_for'] ) );
             add_settings_field(
               $title,
-              $option['label_for'],
+              esc_attr( $option['label_for'] ),
               [static::class, 'showText'],
               static::PAGE . static::EXTENSION, // Page
               static::PAGE . static::EXTENSION . '_section',
               [
-                'label_for' => $option['label_for'],
-                'text' => ($option['text']) ?: null,
-                'id' => $id
+                'label_for' => esc_attr( $option['label_for'] ),
+                'text' => ( esc_attr( $option['text'] ) ) ?: null,
+                'id' => esc_attr( $id )
               ]
             );
         }

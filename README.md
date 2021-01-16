@@ -7,7 +7,7 @@ Tags: socials, media, navigation, facebook, twitter, instagram, shortcode, multi
 Requires at least: 5.2
 Tested up to: 5.5
 Requires PHP: 7.2
-Stable tag: 0.00.02
+Stable tag: 0.00.02.03
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 

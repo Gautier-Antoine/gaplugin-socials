@@ -70,8 +70,8 @@ class AdminSocials {
    * Scripts to register on all pages
    */
   public static function registerPublicScripts () {
-    wp_register_style(static::FILE, static::getFolder() . 'includes/' . static::FILE . '.css');
-    wp_enqueue_style(static::FILE);
+    // wp_register_style(static::FILE);
+    wp_enqueue_style(static::FILE, static::getFolder() . 'includes/' . static::FILE . '.css');
   }
 
   /**
@@ -80,8 +80,8 @@ class AdminSocials {
   */
   public static function AdminScripts($suffix) {
       if ($suffix === (strtolower(static::MENU) . '_page_' . static::ADMINPAGE . '-' . static::PAGE)) {
-          static::registerAdminScripts();
-          }
+        static::registerAdminScripts();
+      }
   }
 
   /**
@@ -207,13 +207,13 @@ class AdminSocials {
         ?>
           <input
             type="textarea"
-            id="<?= $args['label_for'] ?>"
-            name="<?= $option_name . '[' . $args['id'] . '][text]' ?>"
+            id="<?= esc_attr( $args['label_for'] ) ?>"
+            name="<?= esc_attr( $option_name ) . '[' . esc_attr( $args['id'] ) . '][text]' ?>"
             class="textarea show-text"
             title="<?php printf(__('Add some text before the links', static::LANGUAGE)) ?>"
-            value="<?= $args['text'] ?>"
+            value="<?= esc_attr( $args['text'] ) ?>"
           ></input>
-          <input type="hidden" name="<?= $option_name . '[' . $args['id'] . '][label_for]' ?>" value="<?= $args['label_for'] ?>"></input>
+          <input type="hidden" name="<?= esc_attr( $option_name ) . '[' . esc_attr( $args['id'] ) . '][label_for]' ?>" value="<?= esc_attr( $args['label_for'] ) ?>"></input>
         <?php
     }
 
