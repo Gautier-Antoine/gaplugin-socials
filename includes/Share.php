@@ -55,6 +55,8 @@ class Share extends AdminSocials {
     */
     public static function addPageFunction( $args ) {
         $option_name = static::getOptionName();
+
+        $checked = ( isset( $args['active'] ) ) ? ' checked' : '';
         ?>
           <input
             type="checkbox"
@@ -62,12 +64,16 @@ class Share extends AdminSocials {
             id="<?= esc_attr( $args['label_for'] ) ?>"
             name="<?= esc_attr( $option_name ) . '[' . esc_attr( $args['id'] ) . '][active]' ?>"
             title="<?php printf( __('Checkbox for %1$s', static::LANGUAGE), esc_attr( $args['label_for'] ) ) ?>"
-            <?php ( isset( $args['active'] ) ) ? ' checked' : ''; ?>
+            <?= $checked ?>
           >
         </td><td>
           <input type="hidden" name="<?= esc_attr( $option_name ) . '[' . esc_attr( $args['id'] ) . '][label_for]' ?>" value="<?= esc_attr( $args['label_for'] ) ?>"></input>
         </td><td>
           <input type="hidden" name="<?= esc_attr( $option_name ) . '[' . esc_attr( $args['id'] ) . '][url]' ?>" value="<?= esc_url( $args['url'] ) ?>"></input>
+        </td><td>
+          <input type="hidden" name="<?= esc_attr( $option_name ) . '[' . esc_attr( $args['id'] ) . '][imgurl]' ?>" value="<?= esc_html( $args['imgurl'] ) ?>"></input>
+        </td><td>
+          <input type="hidden" name="<?= esc_attr( $option_name ) . '[' . esc_attr( $args['id'] ) . '][titleurl]' ?>" value="<?= esc_html( $args['titleurl'] ) ?>"></input>
 
         <?php
     }
@@ -87,19 +93,23 @@ class Share extends AdminSocials {
           }
         } else {
           if ( $option['active'] === true ) {
+          // var_dump ($option);
+
             $img = null;
-            if ( isset( $option['imgurl'] ) ) {
-              $img = esc_url( $option['imgurl'] ) . get_the_post_thumbnail_url( get_the_ID(),'full' );
+            if ( !empty( $option['imgurl'] ) && !empty( get_the_post_thumbnail_url( get_the_ID(), 'full' ) )) {
+              $img =  $option['imgurl']  . get_the_post_thumbnail_url( get_the_ID(), 'full' );
             }
             $title = null;
-            if ( isset( $option['titleurl'] ) ) {
-              $title = esc_url( $option['titleurl'] ) . get_the_title();
+            if ( !empty( $option['titleurl'] ) && !empty( get_the_title() ) ) {
+              $title =  $option['titleurl']  . get_the_title();
             }
+            $url = $option['url'] . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] .  $img  .  $title;
+
             echo '
               <a
                 target="_blank"
                 title="' . __( 'Share this on', static::LANGUAGE ) . ' ' . esc_attr( $option['label_for'] ) . '"
-                href="' . esc_url( $option['url'] ) . get_permalink() . esc_url( $img ) . esc_url( $title ) . '"
+                href="' . esc_url( $url ) . '"
               >
                 <div class="' . strtolower( esc_attr( $option['label_for'] ) ) . '"></div>
               </a>';
@@ -115,7 +125,7 @@ class Share extends AdminSocials {
      * @param string $option_name
      */
     public static function getFields( $option_name ) {
-      $options = (get_option( $option_name )) ?: static::$list;
+      $options = ( get_option( $option_name ) ) ?: static::$list;
       foreach ( $options as $id => $option ) {
         if ($id !== 'settings') {
           $title = static::PAGE . static::EXTENSION . '_' . strtolower( esc_attr( $option['label_for'] ) );
@@ -127,7 +137,9 @@ class Share extends AdminSocials {
             static::PAGE . static::EXTENSION . '_section',
             [
               'label_for' => esc_attr( $option['label_for'] ),
-              'url' => ($option['url']) ? esc_attr( $option['url'] ) : null,
+              'url' => ($option['url']) ? esc_url( $option['url'] ) : null,
+              'imgurl' => (!empty($option['imgurl'])) ? esc_html( $option['imgurl'] ) : false,
+              'titleurl' => ( !empty( $option['titleurl'] ) ) ? esc_html( $option['titleurl'] ) : null,
               'active' => ($option['active']) ? esc_attr( $option['active'] ) : 0,
               'id' => esc_attr( $id ),
               'class' => strtolower( esc_attr( $option['label_for'] ) )
@@ -164,7 +176,9 @@ class Share extends AdminSocials {
         } else {
           $valid_input[$key]['label_for'] = sanitize_text_field( $option['label_for'] );
           $valid_input[$key]['url'] = sanitize_url( $option['url'] );
-          $valid_input[$key]['active'] = ( isset($option['active']) ) ? true : false;
+          $valid_input[$key]['imgurl'] = ( isset( $option['imgurl'] ) ) ? wp_filter_post_kses( $option['imgurl'] ) : false;
+          $valid_input[$key]['titleurl'] = ( isset( $option['titleurl'] ) ) ? wp_filter_post_kses( $option['titleurl'] ) : false;
+          $valid_input[$key]['active'] = ( isset( $option['active'] ) ) ? true : false;
         }
       }
       return $valid_input;

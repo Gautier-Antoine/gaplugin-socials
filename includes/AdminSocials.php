@@ -43,7 +43,7 @@ class AdminSocials {
     /**
     * @var string name for the admin page
     */
-    ADMINPAGE = 'ga-admin-page';
+    ADMINPAGE = 'gap-admin-page';
 
   /**
   * @var array list of social medias
