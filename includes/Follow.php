@@ -1,6 +1,6 @@
 <?php
 /**
- * @package Socials-GA
+ * @package GAP-Socials
  */
 namespace GAPlugin;
 /**
@@ -88,13 +88,13 @@ class Follow extends AdminSocials {
      */
     public static function ShortcodeNav() {
         $option_name = static::getOptionName();
-        echo '<div class="' . static::PAGE . '">';
+        $shortcode = '<div class="' . static::PAGE . '">';
         foreach ( get_option( $option_name ) as $id => $option ) {
             if ( $id === 'settings' ) {
               if (!empty( $option['text'] ) ) {
-                echo '<div class="' . static::PAGE . '-text">';
-                  printf( esc_attr( $option['text'] ) );
-                echo '</div>';
+              $shortcode .=  '<div class="' . static::PAGE . '-text">' .
+                  esc_attr( $option['text'] )
+              . '</div>';
               }
             } else {
               if ($option['label_for'] === 'Email') {
@@ -105,7 +105,7 @@ class Follow extends AdminSocials {
                 $link = '';
               }
               if ( !empty ( $option['url'] ) ) {
-                echo '
+                $shortcode .= '
                   <a
                     target="_blank"
                     title="' . __( 'Link to', static::LANGUAGE ) . ' ' . esc_attr( $option['label_for'] ) . '"
@@ -117,7 +117,8 @@ class Follow extends AdminSocials {
               }
             }
         }
-        echo '</div>';
+        $shortcode .= '</div>';
+        return $shortcode;
     }
 
     /**

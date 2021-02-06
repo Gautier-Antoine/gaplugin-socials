@@ -1,6 +1,6 @@
 <?php
 /**
- * @package Socials-GA
+ * @package GAP-Socials
  */
 namespace GAPlugin;
 /**
@@ -122,7 +122,8 @@ class AdminSocials {
             'manage_options',
             static::ADMINPAGE,
             [static::class,'GAPlugin_admin_page'],
-            'dashicons-share',
+            static::getFolder() . 'images/icon.svg',
+            // 'dashicons-share',
             30
         );
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * @package Socials-GA
+ * @package GAP-Socials
  */
 namespace GAPlugin;
 /**
@@ -56,7 +56,7 @@ class Share extends AdminSocials {
     public static function addPageFunction( $args ) {
         $option_name = static::getOptionName();
 
-        $checked = ( isset( $args['active'] ) ) ? ' checked' : '';
+        $checked = ( isset( $args['active'] ) && $args['active'] === '1' ) ? ' checked' : '';
         ?>
           <input
             type="checkbox"
@@ -83,13 +83,13 @@ class Share extends AdminSocials {
      */
     public static function ShortcodeNav() {
       $option_name = static::getOptionName();
-      echo '<div class="' . static::PAGE . '">';
+      $shortcode = '<div class="' . static::PAGE . '">';
       foreach ( get_option( $option_name ) as $id => $option ) {
         if ( $id === 'settings' ) {
           if (!empty( $option['text'] ) ) {
-            echo '<div class="' . static::PAGE . '-text">';
-              printf( esc_attr( $option['text'] ) );
-            echo '</div>';
+            $shortcode .= '<div class="' . static::PAGE . '-text">' .
+              esc_attr( $option['text'] )
+            . '</div>';
           }
         } else {
           if ( $option['active'] === true ) {
@@ -105,7 +105,7 @@ class Share extends AdminSocials {
             }
             $url = $option['url'] . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] .  $img  .  $title;
 
-            echo '
+            $shortcode .= '
               <a
                 target="_blank"
                 title="' . __( 'Share this on', static::LANGUAGE ) . ' ' . esc_attr( $option['label_for'] ) . '"
@@ -116,7 +116,8 @@ class Share extends AdminSocials {
           }
         }
       }
-      echo '</div>';
+      $shortcode .= '</div>';
+      return $shortcode;
     }
 
     /**
