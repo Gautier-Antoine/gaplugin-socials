@@ -56,7 +56,7 @@ class Share extends AdminSocials {
     public static function addPageFunction( $args ) {
         $option_name = static::getOptionName();
 
-        $checked = ( isset( $args['active'] ) && $args['active'] === '1' ) ? ' checked' : '';
+        $checked = ( isset( $args['active'] ) && $args['active'] === true ) ? ' checked' : '';
         ?>
           <input
             type="checkbox"
@@ -99,16 +99,17 @@ class Share extends AdminSocials {
             if ( !empty( $option['imgurl'] ) && !empty( get_the_post_thumbnail_url( get_the_ID(), 'full' ) )) {
               $img =  $option['imgurl']  . get_the_post_thumbnail_url( get_the_ID(), 'full' );
             }
-            $title = null;
+            $getTitle = null;
             if ( !empty( $option['titleurl'] ) && !empty( get_the_title() ) ) {
-              $title =  $option['titleurl']  . get_the_title();
+              $getTitle =  $option['titleurl']  . get_the_title();
             }
-            $url = $option['url'] . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] .  $img  .  $title;
+            $url = $option['url'] . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] .  $img  .  $getTitle;
 
+            $title = ( $option['label_for'] === 'Email' ) ? __( 'Share this by', static::LANGUAGE ) : __( 'Share this on', static::LANGUAGE );
             $shortcode .= '
               <a
                 target="_blank"
-                title="' . __( 'Share this on', static::LANGUAGE ) . ' ' . esc_attr( $option['label_for'] ) . '"
+                title="' . $title . ' ' . esc_attr( $option['label_for'] ) . '"
                 href="' . esc_url( $url ) . '"
               >
                 <div class="' . strtolower( esc_attr( $option['label_for'] ) ) . '"></div>
@@ -129,7 +130,7 @@ class Share extends AdminSocials {
       $options = ( get_option( $option_name ) ) ?: static::$list;
       foreach ( $options as $id => $option ) {
         if ($id !== 'settings') {
-          $title = static::PAGE . static::EXTENSION . '_' . strtolower( esc_attr( $option['label_for'] ) );
+          $title = static::PAGE . static::EXTENSION . '_' . strtolower( $option['label_for'] );
           add_settings_field(
             $title,
             esc_attr( $option['label_for'] ),
@@ -137,27 +138,27 @@ class Share extends AdminSocials {
             static::PAGE . static::EXTENSION, // Page
             static::PAGE . static::EXTENSION . '_section',
             [
-              'label_for' => esc_attr( $option['label_for'] ),
-              'url' => ($option['url']) ? esc_url( $option['url'] ) : null,
-              'imgurl' => (!empty($option['imgurl'])) ? esc_html( $option['imgurl'] ) : false,
-              'titleurl' => ( !empty( $option['titleurl'] ) ) ? esc_html( $option['titleurl'] ) : null,
-              'active' => ($option['active']) ? esc_attr( $option['active'] ) : 0,
-              'id' => esc_attr( $id ),
-              'class' => strtolower( esc_attr( $option['label_for'] ) )
+              'label_for' => $option['label_for'],
+              'url' => ($option['url']) ? $option['url'] : null,
+              'imgurl' => (!empty($option['imgurl'])) ? $option['imgurl'] : false,
+              'titleurl' => ( !empty( $option['titleurl'] ) ) ? $option['titleurl'] : null,
+              'active' => (isset($option['active'])) ? $option['active'] : 0,
+              'id' => $id,
+              'class' => strtolower( $option['label_for'] )
             ]
           );
         } else {
-          $title = static::PAGE . static::EXTENSION . '_' . strtolower( esc_attr( $option['label_for'] ) );
+          $title = static::PAGE . static::EXTENSION . '_' . strtolower( $option['label_for'] );
           add_settings_field(
             $title,
-            esc_attr( $option['label_for'] ),
+            $option['label_for'],
             [static::class, 'showText'],
             static::PAGE . static::EXTENSION, // Page
             static::PAGE . static::EXTENSION . '_section',
             [
-              'label_for' => esc_attr( $option['label_for'] ),
-              'text' => ( $option['text'] ) ? esc_attr( $option['text'] ) : null,
-              'id' => esc_attr( $id )
+              'label_for' => $option['label_for'],
+              'text' => ( $option['text'] ) ? $option['text'] : null,
+              'id' => $id
             ]
           );
         }

@@ -76,8 +76,12 @@ class Follow extends AdminSocials {
             id="<?= esc_attr( $args['label_for'] ) ?>"
             rows= "1"
             title="<?php printf( __('Put your %1$s URL', static::LANGUAGE), esc_attr( $args['label_for'] ) ) ?>"
-          ><?=
-            esc_url( $args['url'] );
+          ><?php
+            if ($args['label_for'] == 'Email' || $args['label_for'] == 'Phone') {
+              echo esc_attr( $args['url'] );
+            } else {
+              echo esc_url( $args['url'] );
+            }
           ?></textarea>
           <input type="hidden" name="<?= esc_attr( $option_name ) . '[' . esc_attr( $args['id'] ) . '][label_for]' ?>" value="<?= esc_attr( $args['label_for'] ) ?>"></input>
         <?php
@@ -97,19 +101,20 @@ class Follow extends AdminSocials {
               . '</div>';
               }
             } else {
-              if ($option['label_for'] === 'Email') {
-                $link = 'mailto:';
-              } elseif ($option['label_for'] === 'Phone') {
-                $link = 'tel:';
-              } else {
-                $link = '';
-              }
               if ( !empty ( $option['url'] ) ) {
+                if ($option['label_for'] === 'Email') {
+                  $link = 'mailto:' . esc_attr( $option['url'] );
+                } elseif ($option['label_for'] === 'Phone') {
+                  $link = 'tel:' . esc_attr( $option['url'] );
+                } else {
+                  $link = esc_url( $option['url'] );
+                }
+
                 $shortcode .= '
                   <a
                     target="_blank"
                     title="' . __( 'Link to', static::LANGUAGE ) . ' ' . esc_attr( $option['label_for'] ) . '"
-                    href="' . $link . esc_url( $option['url'] ) . '"
+                    href="' . $link . '"
                   >
                     <div class="' . strtolower( esc_attr( $option['label_for'] ) ) . '"></div>
                   </a>
@@ -130,7 +135,7 @@ class Follow extends AdminSocials {
       $options = (get_option( $option_name )) ?: static::$list;
       foreach ( $options as $id => $option ) {
         if ( $id !== 'settings' ) {
-          $title = static::PAGE . static::EXTENSION . '_' . strtolower( esc_attr( $option['label_for'] ) );
+          $title = static::PAGE . static::EXTENSION . '_' . strtolower( $option['label_for'] );
           add_settings_field(
             $title,
             esc_attr( $option['label_for'] ),
@@ -138,24 +143,24 @@ class Follow extends AdminSocials {
             static::PAGE . static::EXTENSION, // Page
             static::PAGE . static::EXTENSION . '_section',
             [
-              'label_for' => esc_attr( $option['label_for'] ),
-              'url' => ( esc_url( $option['url'] ) ) ?: null,
-              'id' => esc_attr( $id ),
-              'class' => strtolower( esc_attr( $option['label_for'] ) )
+              'label_for' => $option['label_for'],
+              'url' => ( $option['url'] ) ?: null,
+              'id' => $id,
+              'class' => strtolower( $option['label_for'] )
             ]
           );
         } else {
-            $title = static::PAGE . static::EXTENSION . '_' . strtolower( esc_attr( $option['label_for'] ) );
+            $title = static::PAGE . static::EXTENSION . '_' . strtolower( $option['label_for'] );
             add_settings_field(
               $title,
-              esc_attr( $option['label_for'] ),
+              $option['label_for'],
               [static::class, 'showText'],
               static::PAGE . static::EXTENSION, // Page
               static::PAGE . static::EXTENSION . '_section',
               [
-                'label_for' => esc_attr( $option['label_for'] ),
-                'text' => ( esc_attr( $option['text'] ) ) ?: null,
-                'id' => esc_attr( $id )
+                'label_for' => $option['label_for'],
+                'text' => ( $option['text'] ) ?: null,
+                'id' => $id
               ]
             );
         }

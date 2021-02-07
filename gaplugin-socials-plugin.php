@@ -6,7 +6,7 @@
 Plugin Name: GAP-Socials
 Plugin URI: https://github.com/Gautier-Antoine/gaplugin-socials
 Description: Plugin for your socials media
-Version: 0.01.00.00
+Version: 0.01.00.01
 
 Requires at least: 5.2
 Tested up to: 5.6
